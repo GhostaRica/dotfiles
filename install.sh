@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set the absolute path of the dotfiles repo
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Color helpers
 YELLOW='\033[1;33m'
 GREEN='\033[1;32m'
@@ -71,14 +74,14 @@ echo -e "\n${CYAN}📂 Copying Zsh dotfiles...${RESET}"
 mkdir -p "$HOME/.zsh/config"
 
 # Symlink the base dotfiles
-ln -sf "$PWD/zsh/.zshenv" "$HOME/.zshenv" \
+ln -sf "$DOTFILES_DIR/zsh/.zshenv" "$HOME/.zshenv" \
     && echo -e "${GREEN}✔ Linked .zshenv${RESET}"
 
-ln -sf "$PWD/zsh/.zshrc" "$HOME/.zsh/.zshrc" \
+ln -sf "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zsh/.zshrc" \
     && echo -e "${GREEN}✔ Linked .zsh/.zshrc${RESET}"
 
 # Sync config folder contents
-for file in "$PWD/zsh/config/"*.zsh; do
+for file in "$DOTFILES_DIR/zsh/config/"*.zsh; do
   ln -sf "$file" "$HOME/.zsh/config/$(basename "$file")" \
     && echo -e "${GREEN}✔ Linked .zsh/config/$file${RESET}"
 done
