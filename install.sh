@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Set the absolute path of the dotfiles repo
+START_DIR=$PWD
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Color helpers
@@ -101,4 +102,5 @@ for file in "$DOTFILES_DIR/zsh/config/"*.zsh; do
     && echo -e "${GREEN}✔ Linked .zsh/config/$file${RESET}"
 done
 
+cd $START_DIR
 echo -e "\n${GREEN}✔ Done! Start a new terminal or run \`zsh\`${RESET}"
