@@ -99,7 +99,7 @@ ln -sf "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zsh/.zshrc" \
 # Sync config folder contents
 for file in "$DOTFILES_DIR/zsh/config/"*.zsh; do
   ln -sf "$file" "$HOME/.zsh/config/$(basename "$file")" \
-    && echo -e "${GREEN}✔ Linked .zsh/config/$file${RESET}"
+    && echo -e "${GREEN}✔ Linked .zsh/config/$(basename "$file")${RESET}"
 done
 
 cd $START_DIR
