@@ -89,6 +89,9 @@ done
 echo -e "\n${CYAN}📂 Copying Zsh dotfiles...${RESET}"
 mkdir -p "$HOME/.zsh/config"
 
+# first remove all symlinks so we don't end up with broken links
+rm "$HOME/.zsh/config"/*
+
 # Symlink the base dotfiles
 ln -sf "$DOTFILES_DIR/zsh/.zshenv" "$HOME/.zshenv" \
     && echo -e "${GREEN}✔ Linked .zshenv${RESET}"
